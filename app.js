@@ -28,7 +28,13 @@ db.once("open", () => {
 
 app.post("/api/slides", (req, res) => {
   try {
-    const slide = new Carousel(req.body);
+    const { title, image, subTitle } = req.body;
+
+    const slide = new Carousel({
+      title,
+      image,
+      subTitle,
+    });
     slide.save();
     return res.status(201).json(slide);
   } catch (err) {
