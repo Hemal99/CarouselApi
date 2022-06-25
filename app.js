@@ -15,7 +15,6 @@ app.get("/api/carousel", async function (req, res) {
 
   const noOfSlides = Number(req.query.slides);
 
-  console.log("req", noOfSlides);
   if (noOfSlides > 10) {
     return res.status(400).send("Max 10 slides");
   }
