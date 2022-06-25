@@ -61,6 +61,17 @@ app.get("/api/carousel", async function (req, res) {
   }
 });
 
+app.get("/api/view-carousel", async function (req, res) {
+  try {
+    const slidesToReturn = await Carousel.find();
+    // Return the Slides to the frontend
+
+    return res.status(200).json(slidesToReturn);
+  } catch (err) {
+    return res.status(500).send(err);
+  }
+});
+
 app.listen(3600, function () {
   console.log("Server is listening on port 3600");
 });
