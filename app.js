@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // usually we do not show mongoDb password in here , we get it from the env file
-const connectionURI = `mongodb+srv://Hemal:12345@cluster0.wt9hmp7.mongodb.net/test`;
+const connectionURI = `mongodb+srv://Hemal:${process.env.DB_PASSWORD}@cluster0.umjen3u.mongodb.net/test`;
 
 /* eslint-enable */
 mongoose.connect(connectionURI, {
@@ -64,6 +64,8 @@ app.get("/api/carousel", async function (req, res) {
 app.get("/api/view-carousel", async function (req, res) {
   try {
     const slidesToReturn = await Carousel.find();
+
+    console.log(slidesToReturn);
     // Return the Slides to the frontend
 
     return res.status(200).json(slidesToReturn);
