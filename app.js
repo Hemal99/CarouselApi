@@ -9,7 +9,6 @@ let app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// usually we do not show mongoDb password in here , we get it from the env file
 const connectionURI = `mongodb+srv://Hemal:${process.env.DB_PASSWORD}@cluster0.umjen3u.mongodb.net/test`;
 
 /* eslint-enable */
